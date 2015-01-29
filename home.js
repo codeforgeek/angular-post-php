@@ -24,9 +24,6 @@ app.controller('sign_up', function ($scope, $http) {
         if ($scope.password == "" || $scope.password == null) {
             error = 3;
         }
-        if ($scope.password.length > 12) {
-            error = 4;
-        }
         if (error == 0) {
             var request = $http({
                 method: "post",
