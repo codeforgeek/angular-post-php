@@ -11,7 +11,7 @@ app.controller('sign_up', function ($scope, $http) {
         * Password Cannot be blank, not be more than 12 characters, should not contain 1=1.
         * Set the Messages to Blank each time the function is called.
         */
-        document.getElementById("message").textContent = "";
+        $scope.message = "";
         var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
         var error = 0;
         if ($scope.email == "" || $scope.email == null) {
@@ -24,13 +24,10 @@ app.controller('sign_up', function ($scope, $http) {
         if ($scope.password == "" || $scope.password == null) {
             error = 3;
         }
-        if ($scope.password.length > 12) {
-            error = 4;
-        }
         if (error == 0) {
             var request = $http({
                 method: "post",
-                url: window.location.href + "login.php",
+                url: "login.php",
                 data: {
                     email: $scope.email,
                     pass: $scope.password
@@ -43,7 +40,7 @@ app.controller('sign_up', function ($scope, $http) {
             });
         }
         else {
-            document.getElementById("message").textContent = "You have Filled Wrong Details !";
+            $scope.message = "You have Filled Wrong Details! Error: " + error;
         }
     }
 
