@@ -27,7 +27,7 @@ app.controller('sign_up', function ($scope, $http) {
         if (error == 0) {
             var request = $http({
                 method: "post",
-                url: "login.php",
+                url: window.location.host + "/login.php",
                 data: {
                     email: $scope.email,
                     pass: $scope.password
